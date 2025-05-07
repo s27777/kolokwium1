@@ -29,15 +29,9 @@ public class AppointmentController : ControllerBase
     }
 
     [HttpPost("/api/appointments")]
-    public async Task<IActionResult> AddAppointment(AppointmentDTO appointment)
+    public async Task<IActionResult> AddAppointment([FromBody] CreateAppointmentDTO appointment)
     {
-        private readonly IAppointmentService _appointmentService;
-
-        public AppointmentController(IAppointmentService appointmentService)
-        {
-            _appointmentService = appointmentService;
-        }
-        
-        
+        var newId = await _appointmentService.AddAppointment(appointment);
+        return Created();
     }
 }

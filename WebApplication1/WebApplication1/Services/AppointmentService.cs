@@ -34,7 +34,12 @@ public class AppointmentService : IAppointmentService
         return null;
     }
 
-    public async Task<AppointmentDTO> AddAppointment(AppointmentDTO appointment)
+    public Task<AppointmentDTO> AddAppointment(AppointmentDTO appointment)
+    {
+        throw new NotImplementedException();
+    }
+
+    public async Task<AppointmentDTO> AddAppointment(CreateAppointmentDTO appointment)
     {
         string command = @"INSERT INTO Appointment(appointment_id, patient_id, doctor_id, date) VALUES(@appointmentId, @patientId, @doctorId, @date)";
         
@@ -49,5 +54,7 @@ public class AppointmentService : IAppointmentService
             await conn.OpenAsync();
             var newId = await cmd.ExecuteNonQueryAsync();
         }
+
+        return new AppointmentDTO();
     }
 }

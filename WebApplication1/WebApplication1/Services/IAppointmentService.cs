@@ -5,5 +5,5 @@ namespace WebApplication1.Services;
 public interface IAppointmentService
 {
     Task<AppointmentDTO> GetAppointment(int appointmentId);
-    Task<AppointmentDTO> AddAppointment(AppointmentDTO appointment);
+    Task<AppointmentDTO> AddAppointment(CreateAppointmentDTO appointment);
 }
